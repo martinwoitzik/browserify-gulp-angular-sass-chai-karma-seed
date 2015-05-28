@@ -9,27 +9,46 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
+    modify = require('gulp-modify'),
     concat = require('gulp-concat');
 
 
-gulp.task('build', ['cleanup', 'css', 'templates', 'js']);
+gulp.task('build', ['cleanup', 'styles', 'templates', 'js']);
 
 
 gulp.task('cleanup', function() {
-  del(['public/*.*', 'public/js/*.*']);
+  del(['public/**/*']);
 });
 
 
-gulp.task('css', [], function () {
+gulp.task('styles', ['css:modules', 'css:build'], function() {});
+
+gulp.task('css:modules', function() {
+  gulp.src([
+    "app/*/**/*.scss",
+    "!**/_styles*/**/*"
+  ])
+  .pipe(modify({
+    fileModifier: function(file, contents) {
+      var filePath = file.relative.replace('.scss', '')
+      return "@import './" + filePath + "';";
+    }
+  }))
+  .pipe(concat('_modules.scss'))
+  .pipe(modify({
+    fileModifier: function(file, contents) {
+      return '// This file is generated via gulp!\n' + contents + '\n';
+    }
+  }))
+  .pipe(gulp.dest('app'));
+});
+
+gulp.task('css:build', [], function () {
   var sassOptions = {
-    //outputStyle: 'compressed'
-    //includePaths: [
-    //  'src/**/*.scss'
-    //]
+    outputStyle: 'compressed'
   };
-  return gulp.src(['src/app.scss'])
-    //.pipe(sourcemaps.init())
-    .pipe(sass())
+  return gulp.src(['app/app.scss'])
+    .pipe(sass(sassOptions))
     .pipe(autoprefixer())
     .pipe(gulp.dest('public/css'));
 });
