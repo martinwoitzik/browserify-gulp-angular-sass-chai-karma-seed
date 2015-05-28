@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-site2",
+  "version": "0.0.0",
+  "authors": [
+    "Martin Woitzik <m.woitzik@gmx.de>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3.8",
+    "angular-ui-router": "~0.2.15",
+    "angular-touch": "1.3.8",
+    "angular-carousel": "~0.3.10",
+    "angular-bootstrap": "~0.13.0"
+  }
+}
