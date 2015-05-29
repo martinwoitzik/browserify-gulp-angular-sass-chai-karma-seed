@@ -70,8 +70,6 @@ gulp.task('scripts:js:modules', function() {
   ])
   .pipe(modify({
     fileModifier: function(file, contents) {
-      //var regex = /module\(\'(.*)\'/;
-      //var moduleName = contents.match(regex);
       var filePath = file.relative.replace('/index.js', '\');');
       return 'require(\'./' + filePath;
     }
