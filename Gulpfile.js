@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
 
-gulp.task('build', ['cleanup', 'styles', 'templates', 'js']);
+gulp.task('build', ['cleanup', 'styles', 'templates', 'scripts']);
 
 
 gulp.task('cleanup', function() {
@@ -21,9 +21,13 @@ gulp.task('cleanup', function() {
 });
 
 
-gulp.task('styles', ['css:modules', 'css:build'], function() {});
+gulp.task('styles', ['styles:css:modules', 'styles:css:build'], function() {});
 
-gulp.task('css:modules', function() {
+/**
+ *  Fetch scss files by parsing the folder structure and put every module inside
+ *  the '_modules.scss' file which gets included by app.scss
+ */
+gulp.task('styles:css:modules', function() {
   gulp.src([
     "app/*/**/*.scss",
     "!**/_styles*/**/*"
@@ -43,7 +47,7 @@ gulp.task('css:modules', function() {
   .pipe(gulp.dest('app'));
 });
 
-gulp.task('css:build', [], function () {
+gulp.task('styles:css:build', [], function () {
   var sassOptions = {
     outputStyle: 'compressed'
   };
@@ -54,7 +58,34 @@ gulp.task('css:build', [], function () {
 });
 
 
-gulp.task('js', function() {
+gulp.task('scripts', ['scripts:js:modules', 'scripts:js:build'], function() {});
+
+/**
+ *  Fetch modules by parsing the folder structure and put every module inside
+ *  the '_dependencies.js' file which gets included by app.js
+ */
+gulp.task('scripts:js:modules', function() {
+  gulp.src([
+      "app/**/**/index.js"
+  ])
+  .pipe(modify({
+    fileModifier: function(file, contents) {
+      //var regex = /module\(\'(.*)\'/;
+      //var moduleName = contents.match(regex);
+      var filePath = file.relative.replace('/index.js', '\');');
+      return 'require(\'./' + filePath;
+    }
+  }))
+  .pipe(concat('_dependencies.js'))
+  .pipe(modify({
+    fileModifier: function(file, contents) {
+      return '// This file is generated via gulp!\n' + contents + '\n';
+    }
+  }))
+  .pipe(gulp.dest('app'));
+});
+
+gulp.task('scripts:js:build', function() {
   gulp.src(['app/app.js'])
     .pipe(browserify({
       insertGlobals: true,

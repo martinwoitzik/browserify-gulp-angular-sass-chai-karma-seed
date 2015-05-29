@@ -3,3 +3,6 @@ bower_components/
 node_modules/
 public/
 npm-debug.log
+app/_modules.scss
+app/_dependencies.js
+TODO.md
