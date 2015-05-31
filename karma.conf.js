@@ -4,6 +4,7 @@ module.exports = function(config) {
     'bower_components/angular/angular.js',
     'node_modules/angular-mocks/angular-mocks.js',
     'bower_components/angular-ui-router/release/angular-ui-router.js',
+    'node_modules/chai/chai.js',
 
     'public/js/bundle.js',
     'public/js/templates.min.js',
@@ -28,13 +29,15 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: [
       'browserify',
-      'jasmine'
+      'mocha',
+      'chai'
     ],
 
 
     plugins: [
       'karma-browserify',
-      'karma-jasmine',
+      'karma-mocha',
+      'karma-chai',
       'karma-chrome-launcher'
     ],
 

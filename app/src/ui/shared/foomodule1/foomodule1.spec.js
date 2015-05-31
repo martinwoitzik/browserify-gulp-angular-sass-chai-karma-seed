@@ -38,7 +38,7 @@ describe('foomodule1', function() {
   describe('loading the foomodule1 module', function() {
 
     it('should render the module', function() {
-      expect($viewElement.find('[ng-click="doSomething()"]')).toBeTruthy();
+      expect($viewElement.find('[ng-click="doSomething()"]')).to.exist;
     });
 
   });
@@ -48,7 +48,7 @@ describe('foomodule1', function() {
 
     it('should change the buttonPressed variable', function() {
       $viewElement.find('[ng-click="doSomething()"]').click();
-      expect($viewElement.scope().buttonPressed).toBe(true);
+      expect($viewElement.scope().buttonPressed).to.be.true;
     });
 
   });
