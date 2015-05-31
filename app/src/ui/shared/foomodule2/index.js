@@ -1,7 +1,7 @@
 'use strict';
 
 require('angular').module('foomodule2', [
-  'portfolio.templates',
+  'foo.templates',
   'foomodule3'
   ])
   .controller('FooModule2Controller', require('./foomodule2.controller'))
