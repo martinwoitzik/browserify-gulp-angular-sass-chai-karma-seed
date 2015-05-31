@@ -4,7 +4,6 @@ describe('foomodule1', function() {
 
   var $scope = null;
   var $viewElement = null;
-  var $templateCache = null;
 
   beforeEach(function() {
     angular.mock.module('foo.templates');
@@ -13,19 +12,12 @@ describe('foomodule1', function() {
     //var apiAuthenticationMock = {
     //  getToken: function() {}
     //};
-    //var nodeTreeMock = {
-    //  getRoomsAndSubrooms: function() {
-    //    return new Promise().resolve()
-    //  }
-    //};
 
     angular.mock.module(function($provide) {
       //$provide.value('ApiAuthentication', apiAuthenticationMock);
-      //$provide.value('NodeTree', nodeTreeMock);
     });
 
-    angular.mock.inject(function($compile, $rootScope, _$templateCache_, _$injector_) {
-      $templateCache = _$templateCache_;
+    angular.mock.inject(function($compile, $rootScope) {
       $scope = $rootScope.$new();
       var template = '<foomodule1></foomodule1>';
       $viewElement = $compile(template)($scope);
