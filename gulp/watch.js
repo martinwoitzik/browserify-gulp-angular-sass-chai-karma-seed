@@ -1,6 +1,6 @@
 module.exports = function(gulp, tasks) {
 
-  gulp.task('watch', ['build'], function() {
+  gulp.task('watch', ['build', 'specs'], function() {
     gulp.watch([
       'app/**/*.js',
       'app/**/*.html',
@@ -8,7 +8,8 @@ module.exports = function(gulp, tasks) {
       '!app/_dependencies.js',
       '!app/_modules.scss'
     ], [
-      'build'
+      'build',
+      'specs'
     ], function(err) {
       console.log(err);
     });

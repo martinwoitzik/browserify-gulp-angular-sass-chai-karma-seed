@@ -34,7 +34,7 @@ module.exports = function(gulp, tasks) {
         debug: true
       }))
       .pipe(tasks.concat('bundle.js'))
-      .pipe(tasks.uglify())
+      //.pipe(tasks.uglify())
       .pipe(gulp.dest('public/js'));
   });
 

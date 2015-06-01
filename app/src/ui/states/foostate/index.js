@@ -1,7 +1,7 @@
 'use strict';
 
 require('angular').module('foostate', [
-    'foo.templates'
+    'app.templates'
   ])
   .controller('FooStateController', require('./foostate.controller'))
   .config(require('./foostate.config'));

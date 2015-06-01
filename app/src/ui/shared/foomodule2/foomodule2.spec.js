@@ -4,11 +4,11 @@ describe('foomodule2', function() {
 
   var $scope = null;
   var $viewElement = null;
+  var sandbox = sinon.sandbox.create();
 
   beforeEach(function() {
     angular.mock.module('app.templates');
     angular.mock.module('foomodule2');
-    angular.mock.module('foomodule3');
 
     angular.mock.inject(function($compile, $rootScope) {
       $scope = $rootScope.$new();
@@ -16,7 +16,11 @@ describe('foomodule2', function() {
       $viewElement = $compile(template)($scope);
       $scope.$apply();
     });
+  });
 
+
+  afterEach(function() {
+    sandbox.restore();
   });
 
 
@@ -35,10 +39,16 @@ describe('foomodule2', function() {
 
   describe('pressing the doSomething button', function() {
 
-    xit('should change the buttonPressed variable', function() {
-      sinon.spy($viewElement.scope().doSomething());
+    var scope = null;
+
+    beforeEach(function() {
+      scope = $viewElement.scope();
+    });
+
+    it('should change the buttonPressed variable', function() {
+      sandbox.spy(scope, 'doSomething');
       $viewElement.find('[ng-click="doSomething()"]').click();
-      expect($viewElement.scope().buttonPressed).to.have.been.called;
+      expect(scope.doSomething).to.have.been.called;
     });
 
   });
