@@ -5,7 +5,6 @@ module.exports = function(gulp, tasks) {
 
   var karmaProcess = null;
   var karmaEnv = process.env;
-  karmaEnv.DISPLAY = ':10';
 
   gulp.task('specs', function() {
     tasks.runSequence('specs:startKarma', 'specs:runKarma');
@@ -13,7 +12,7 @@ module.exports = function(gulp, tasks) {
 
   gulp.task('specs:startKarma', function(callback) {
     if (karmaProcess)
-      return callback()
+      return callback();
 
     karmaProcess = spawn(
       'karma',
