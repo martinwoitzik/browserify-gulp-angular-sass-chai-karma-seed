@@ -1,4 +1,4 @@
-require('./');
+require('./')
 
 describe('foomodule1', function() {
 
@@ -6,7 +6,6 @@ describe('foomodule1', function() {
   var $viewElement = null;
 
   beforeEach(function() {
-    angular.mock.module('foo.templates');
     angular.mock.module('foomodule1');
 
     //var apiAuthenticationMock = {

@@ -10,25 +10,30 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
     modify = require('gulp-modify'),
+    runSequence = require('gulp-run-sequence');
     concat = require('gulp-concat');
 
 
-gulp.task('build', ['cleanup', 'styles', 'templates', 'scripts']);
-
-
-gulp.task('cleanup', function() {
-  del(['public/**/*']);
+gulp.task('build', function(callback) {
+  runSequence('cleanup', 'styles', 'templates', 'scripts', callback);
 });
 
 
-gulp.task('styles', ['styles:css:modules', 'styles:css:build'], function() {});
+gulp.task('cleanup', function() {
+  return del(['public/**/*']);
+});
+
+
+gulp.task('styles', function(callback) {
+  runSequence('styles:css:modules', 'styles:css:build', callback);
+});
 
 /**
  *  Fetch scss files by parsing the folder structure and put every module inside
  *  the '_modules.scss' file which gets included by app.scss
  */
 gulp.task('styles:css:modules', function() {
-  gulp.src([
+  return gulp.src([
     "app/*/**/*.scss",
     "!**/_styles*/**/*"
   ])
@@ -58,14 +63,16 @@ gulp.task('styles:css:build', [], function () {
 });
 
 
-gulp.task('scripts', ['scripts:js:modules', 'scripts:js:build'], function() {});
+gulp.task('scripts', function(callback) {
+  runSequence('scripts:js:modules', 'scripts:js:build', callback);
+});
 
 /**
  *  Fetch modules by parsing the folder structure and put every module inside
  *  the '_dependencies.js' file which gets included by app.js
  */
 gulp.task('scripts:js:modules', function() {
-  gulp.src([
+  return gulp.src([
       "app/**/**/index.js"
   ])
   .pipe(modify({
@@ -84,7 +91,7 @@ gulp.task('scripts:js:modules', function() {
 });
 
 gulp.task('scripts:js:build', function() {
-  gulp.src(['app/app.js'])
+  return gulp.src(['app/app.js'])
     .pipe(browserify({
       insertGlobals: true,
       debug: true
@@ -98,7 +105,7 @@ gulp.task('scripts:js:build', function() {
 gulp.task('templates', function () {
   gulp.src('app/index.html')
     .pipe(gulp.dest('public'));
-  gulp.src('app/src/**/*.html')
+  return gulp.src('app/src/**/*.html')
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(templateCache('templates.min.js', {
       module: 'portfolio.templates',
