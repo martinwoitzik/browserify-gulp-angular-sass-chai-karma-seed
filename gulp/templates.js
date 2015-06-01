@@ -6,7 +6,7 @@ module.exports = function(gulp, tasks) {
     return gulp.src('app/src/**/*.html')
       .pipe(tasks.htmlmin({collapseWhitespace: true}))
       .pipe(tasks.templateCache('templates.min.js', {
-        module: 'portfolio.templates',
+        module: 'app.templates',
         standalone: true
       }))
       .pipe(gulp.dest('public/js'));

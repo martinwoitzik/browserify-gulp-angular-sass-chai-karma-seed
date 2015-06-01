@@ -6,7 +6,9 @@ describe('foomodule2', function() {
   var $viewElement = null;
 
   beforeEach(function() {
+    angular.mock.module('app.templates');
     angular.mock.module('foomodule2');
+    angular.mock.module('foomodule3');
 
     angular.mock.inject(function($compile, $rootScope) {
       $scope = $rootScope.$new();
@@ -20,8 +22,12 @@ describe('foomodule2', function() {
 
   describe('loading the foomodule2 module', function() {
 
-    xit('should render the module', function() {
+    it('should render the module', function() {
       expect($viewElement.find('[ng-click="doSomething()"]')).to.exist;
+    });
+
+    it('should render the foobar3 module', function() {
+      expect($viewElement.find(('[ng-click="doNothing()"]'))).to.exist;
     });
 
   });

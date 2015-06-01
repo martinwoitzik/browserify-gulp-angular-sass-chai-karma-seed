@@ -6,6 +6,7 @@ describe('foomodule1', function() {
   var $viewElement = null;
 
   beforeEach(function() {
+    angular.mock.module('app.templates');
     angular.mock.module('foomodule1');
 
     //var apiAuthenticationMock = {

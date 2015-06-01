@@ -1,4 +1,4 @@
-# browserify-gulp-angular-bootstrap-sass-karma-seed
+# browserify-gulp-angular-sass-chai-karma-seed
 Seed project structure
 
 not ready yet
