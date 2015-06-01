@@ -7,7 +7,7 @@ module.exports = function () {
     controller: 'FooModule3Controller',
     scope: true,
     link: function ($scope, $viewElement, attributes) {
-      console.log('FooModule3 directive: link function calling');
+      //console.log('FooModule3 directive: link function calling');
     }
   }
 };

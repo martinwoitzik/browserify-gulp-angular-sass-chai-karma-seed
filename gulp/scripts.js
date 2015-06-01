@@ -1,7 +1,7 @@
 module.exports = function(gulp, tasks) {
 
   gulp.task('scripts', function(callback) {
-    tasks.runSequence('scripts:js:modules', 'scripts:js:build', callback);
+    tasks.runSequence('scripts:js:build', callback);
   });
 
   /**

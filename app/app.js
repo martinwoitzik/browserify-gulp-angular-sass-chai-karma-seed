@@ -1,6 +1,8 @@
 'use strict';
 
-require('./_dependencies');
+require('./src/ui/shared/foomodule1');
+require('./src/ui/shared/foomodule2');
+require('./src/ui/states/foostate');
 
 var angular = require('angular');
 var app = angular.module('seedApp', [
