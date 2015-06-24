@@ -5,6 +5,7 @@ module.exports = function(gulp, tasks) {
       'app/**/*.js',
       'app/**/*.html',
       'app/**/*.scss',
+      'app/**/*.{png,jpg,jpeg,gif,svg}',
       '!app/_modules.scss'
     ], [
       'build'

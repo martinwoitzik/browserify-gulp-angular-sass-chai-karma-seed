@@ -1,0 +1,10 @@
+{
+  "de": {
+    "headline": "Foomodule1 Überschrift",
+    "footer": "Abschluss"
+  },
+  "en": {
+    "headline": "Foomodule1 Headline",
+    "footer": "Footer"
+  }
+}

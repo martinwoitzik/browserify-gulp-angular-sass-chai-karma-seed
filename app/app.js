@@ -1,8 +1,5 @@
 'use strict';
 
-require('./src/ui/shared/foomodule1');
-require('./src/ui/shared/foomodule2');
-require('./src/ui/shared/foomodule3');
 require('./src/ui/states/foostate');
 
 var angular = require('angular');
@@ -29,7 +26,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider.state(
     'home', {
       url: '/',
-      template: '<div>Home</div>'
+      template: '<a ui-sref="foostate">Goto foostate</a>'
     }
   );
 
