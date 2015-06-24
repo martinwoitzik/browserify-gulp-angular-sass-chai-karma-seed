@@ -10,8 +10,10 @@ Module folders are similar to each other. They always include these files:
 - index.js (this is where you define your angular-module, e.g. the configuration, controllers, directives, filters, etc.)
 - {modulename}.config.js (angular-module configuration for example to define the ui-states)
 - {modulename}.controller.js (angular-module controller)
+- {modulename}.directive.js (angular-module directive)
 - {modulename}.html (template file)
 - {modulename}.scss (sass-stylesheets)
+- {modulename}.locales.json (JSON file including all neccessary locales - separated by locale ISO codes which are configured in 'gulp/config.js')
 - {modulename}.spec.js (optional: spec-file for automated testing of your module)
 
 
