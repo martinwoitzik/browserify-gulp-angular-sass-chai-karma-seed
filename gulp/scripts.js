@@ -12,6 +12,7 @@ module.exports = function(gulp, tasks) {
     return gulp.src([
       "app/**/**/index.js"
     ])
+      .pipe(tasks.plumber())
       .pipe(tasks.modify({
         fileModifier: function(file, contents) {
           var filePath = file.relative.replace('/index.js', '\');');
@@ -29,6 +30,7 @@ module.exports = function(gulp, tasks) {
 
   gulp.task('scripts:js:build', function() {
     return gulp.src(['app/app.js'])
+      .pipe(tasks.plumber())
       .pipe(tasks.browserify({
         insertGlobals: true,
         debug: true

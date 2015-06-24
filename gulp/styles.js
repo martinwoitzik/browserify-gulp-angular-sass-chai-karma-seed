@@ -13,6 +13,7 @@ module.exports = function(gulp, tasks) {
       "app/*/**/*.scss",
       "!**/_styles*/**/*"
     ])
+      .pipe(tasks.plumber())
       .pipe(tasks.modify({
         fileModifier: function(file, contents) {
           var filePath = file.relative.replace('.scss', '')
@@ -33,6 +34,7 @@ module.exports = function(gulp, tasks) {
       outputStyle: 'compressed'
     };
     return gulp.src(['app/app.scss'])
+      .pipe(tasks.plumber())
       .pipe(tasks.sass(sassOptions))
       .pipe(tasks.autoprefixer())
       .pipe(gulp.dest('public/css'));

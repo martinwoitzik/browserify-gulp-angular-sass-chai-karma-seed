@@ -1,4 +1,4 @@
-require('./')
+require('./');
 
 describe('foomodule2', function() {
 

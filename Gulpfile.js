@@ -8,6 +8,7 @@ var tasks = plugins({
 });
 
 require('./gulp/build')(gulp, tasks);
+require('./gulp/images')(gulp, tasks);
 require('./gulp/styles')(gulp, tasks);
 require('./gulp/scripts')(gulp, tasks);
 require('./gulp/specs')(gulp, tasks);

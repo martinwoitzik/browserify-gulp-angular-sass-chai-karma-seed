@@ -5,7 +5,7 @@ module.exports = function(gulp, tasks) {
   gulp.task('default', ['build']);
 
   gulp.task('build', function(callback) {
-    tasks.runSequence('cleanup', 'styles', 'templates', 'scripts', callback);
+    tasks.runSequence('cleanup', 'styles', 'images', 'templates', 'scripts', callback);
   });
 
   gulp.task('cleanup', function() {

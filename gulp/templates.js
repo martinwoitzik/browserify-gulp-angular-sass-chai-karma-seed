@@ -4,6 +4,7 @@ module.exports = function(gulp, tasks) {
     gulp.src('app/index.html')
       .pipe(gulp.dest('public'));
     return gulp.src('app/src/**/*.html')
+      .pipe(tasks.plumber())
       .pipe(tasks.htmlmin({collapseWhitespace: true}))
       .pipe(tasks.templateCache('templates.min.js', {
         module: 'app.templates',
