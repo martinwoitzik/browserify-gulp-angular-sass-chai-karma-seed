@@ -10,14 +10,14 @@ module.exports = function(gulp, tasks) {
       '**/*.{png,jpg,jpeg,gif,svg}'
     ];
     var filesToExclude = [
-      '_modules.scss'
+      config.sass.concatenatedModuleStyles
     ];
 
     filesToWatch = filesToWatch.map(function(glob) {
-      return config.source.base + glob;
+      return config.project.source + glob;
     });
     filesToExclude = filesToExclude.map(function(glob) {
-      return '!' + config.source.base + glob;
+      return '!' + config.project.source + glob;
     });
 
     gulp.watch(filesToWatch.concat(filesToExclude), [

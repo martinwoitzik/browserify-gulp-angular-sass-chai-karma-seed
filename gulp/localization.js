@@ -2,7 +2,7 @@ var config = require('./config');
 
 module.exports = function(gulp, tasks) {
 
-  var supportedLanguages = config.supportedLanguages;
+  var supportedLanguages = config.localization.supportedLanguages;
 
   var buildTranslations = function(options) {
     return gulp.src([
@@ -24,7 +24,7 @@ module.exports = function(gulp, tasks) {
         fileModifier: function (file, content) {
           return 'module.exports = ' + content + ';';
         }}))
-      .pipe(gulp.dest(config.dist.base + 'js'));
+      .pipe(gulp.dest(config.project.dist + config.scripts.dist));
   };
 
   gulp.task('localization', function(callback) {
@@ -34,8 +34,8 @@ module.exports = function(gulp, tasks) {
   gulp.task('localization:modules:build', function() {
     supportedLanguages.forEach(function(language) {
       buildTranslations({
-        glob: config.source.base + 'src/ui/**/*/*_' + language +'.json',
-        dist: 'localization',
+        glob: config.project.source + config.scripts.source + 'ui/**/*/*_' + language +'.json',
+        dist: config.localization.output,
         language: language
       })
     })

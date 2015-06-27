@@ -10,7 +10,7 @@ module.exports = function(gulp, tasks) {
   });
 
   gulp.task('cleanup', function() {
-    return del([config.dist.base + '**/*']);
+    return del([config.project.dist + '**/*']);
   });
 
 };

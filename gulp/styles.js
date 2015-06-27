@@ -12,8 +12,8 @@ module.exports = function(gulp, tasks) {
    */
   gulp.task('styles:css:modules', function() {
     return gulp.src([
-      config.source.base + "*/**/*.scss",
-      "!**/_styles*/**/*"
+      config.project.source + "*/**/*.scss",
+      "!**/styles*/**/*"
     ])
       .pipe(tasks.plumber())
       .pipe(tasks.modify({
@@ -22,24 +22,24 @@ module.exports = function(gulp, tasks) {
           return "@import './" + filePath + "';";
         }
       }))
-      .pipe(tasks.concat('_modules.scss'))
+      .pipe(tasks.concat(config.sass.concatenatedModuleStyles))
       .pipe(tasks.modify({
         fileModifier: function(file, contents) {
           return '// This file is generated via gulp!\n' + contents + '\n';
         }
       }))
-      .pipe(gulp.dest(config.source.base));
+      .pipe(gulp.dest(config.project.source));
   });
 
   gulp.task('styles:css:build', [], function () {
     var sassOptions = {
       outputStyle: 'compressed'
     };
-    return gulp.src([config.source.base + 'app.scss'])
+    return gulp.src([config.project.source + config.sass.entryPoint])
       .pipe(tasks.plumber())
       .pipe(tasks.sass(sassOptions))
       .pipe(tasks.autoprefixer())
-      .pipe(gulp.dest(config.dist.base + 'css'));
+      .pipe(gulp.dest(config.project.dist + config.sass.dist));
   });
 
 };
