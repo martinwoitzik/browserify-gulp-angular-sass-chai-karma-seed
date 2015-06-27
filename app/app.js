@@ -14,18 +14,16 @@ angular.element(document).ready(function () {
 
 angular.module(appTitle, [
   require('angular-ui-router'),
-  'foomodule1',
-  'foomodule2',
   'foostate',
   'home'
 ])
-  .run(function () {
+  .run([function () {
 
     console.log('angular app running');
 
-  })
-  .config(function ($stateProvider, $urlRouterProvider) {
+  }])
+  .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
 
-  });
+  }]);

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($scope) {
+module.exports = ['$scope', function ($scope) {
 
   $scope.buttonPressed = false;
 
@@ -9,4 +9,4 @@ module.exports = function ($scope) {
     console.log('click foomodule1');
   };
 
-};
+}];

@@ -39,7 +39,7 @@ module.exports = function(gulp, tasks) {
         paths: ['./node_modules', './' + config.source.base + 'src/']
       }))
       .pipe(tasks.concat(config.dist.js))
-      //.pipe(tasks.uglify())
+      .pipe(tasks.uglify())
       .pipe(gulp.dest(config.dist.base + 'js'));
   });
 

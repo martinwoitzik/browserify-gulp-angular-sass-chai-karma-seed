@@ -1,10 +1,11 @@
 'use strict';
 
-module.exports = function ($stateProvider) {
+module.exports = ['$stateProvider', function ($stateProvider) {
 
   $stateProvider
     .state('home', {
       url: '/',
       templateUrl: "ui/states/home/home.html"
     });
-};
+
+}];

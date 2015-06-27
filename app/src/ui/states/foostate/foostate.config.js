@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($stateProvider) {
+module.exports = ['$stateProvider', function ($stateProvider) {
 
   $stateProvider
     .state('foostate', {
@@ -8,4 +8,5 @@ module.exports = function ($stateProvider) {
       controller: 'FooStateController',
       templateUrl: "ui/states/foostate/foostate.html"
     });
-};
+
+}];
