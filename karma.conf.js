@@ -1,11 +1,11 @@
-var gulpConfig = require('./gulp/config');
+var cfg = require('./gulp/config');
 
-var scriptsBundle = gulpConfig.project.dist + gulpConfig.scripts.dist + gulpConfig.scripts.output + '.min.js';
-var templatesBundle = gulpConfig.project.dist + gulpConfig.scripts.dist + gulpConfig.templates.output + '.min.js';
-var scriptsRoot = gulpConfig.project.source + gulpConfig.scripts.source;
-var specFilesGlob = gulpConfig.project.source + '**/*.spec.js';
+var scriptsBundle = cfg.project.dist + cfg.scripts.dist + cfg.scripts.output + '.min.js';
+var templatesBundle = cfg.project.dist + cfg.scripts.dist + cfg.templates.output + '.min.js';
+var scriptsRoot = cfg.project.source + cfg.scripts.source;
+var specFilesGlob = cfg.project.source + '**/*.spec.js';
 
-module.exports = function(config) {
+module.exports = function(karmaConfig) {
   var filesToLoad = [
     'bower_components/jquery/dist/jquery.js',
     'bower_components/angular/angular.js',
@@ -20,7 +20,7 @@ module.exports = function(config) {
     specFilesGlob
   ];
 
-  config.set({
+  karmaConfig.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -84,7 +84,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: karmaConfig.LOG_INFO,
 
 
     // enable / disable watching file and executing tests whenever any file changes

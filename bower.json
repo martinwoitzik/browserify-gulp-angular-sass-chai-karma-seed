@@ -1,13 +1,9 @@
 {
-  "name": "portfolio-site2",
-  "version": "0.0.0",
+  "name": "seed-browserify-gulp-angular-sass-chai-karma",
+  "version": "1.0.0",
   "authors": [
     "Martin Woitzik <m.woitzik@gmx.de>"
   ],
-  "moduleType": [
-    "amd"
-  ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
