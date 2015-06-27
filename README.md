@@ -38,6 +38,5 @@ Browserify does all the require magic so you can concentrate on coding features 
 
 # TODO
 
-- language files need to be concatenated to one file
 - language files get compiled but are not included via angular yet
 - add font folder to /shared

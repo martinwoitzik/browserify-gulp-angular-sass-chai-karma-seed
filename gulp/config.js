@@ -1,6 +1,6 @@
 var config = {
   images: {
-    dist: 'images',
+    dist: 'images/',
     source: 'common/images/'
   },
   localization: {
@@ -15,13 +15,13 @@ var config = {
     source: 'app/'
   },
   scripts: {
-    dist: 'js',
+    dist: 'js/',
     entryPoint: 'app.js',
     output: 'bundle',
     source: 'src/'
   },
   sass: {
-    dist: 'css',
+    dist: 'css/',
     entryPoint: 'app.scss',
     concatenatedModuleStyleImports: '_moduleStyleImports.scss'
   },
