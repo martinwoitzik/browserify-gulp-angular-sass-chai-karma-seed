@@ -1,7 +1,7 @@
 'use strict';
 
-require('../../shared/foomodule1');
-require('../../shared/foomodule2');
+require('ui/shared/foomodule1');
+require('ui/shared/foomodule2');
 
 require('angular').module('foostate', [
     'app.templates',

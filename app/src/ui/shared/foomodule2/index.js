@@ -1,6 +1,6 @@
 'use strict';
 
-require('../foomodule3');
+require('ui/shared/foomodule3');
 
 require('angular').module('foomodule2', [
     'app.templates',

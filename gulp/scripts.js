@@ -33,7 +33,8 @@ module.exports = function(gulp, tasks) {
       .pipe(tasks.plumber())
       .pipe(tasks.browserify({
         insertGlobals: true,
-        debug: true
+        debug: true,
+        paths: ['./node_modules','./app/src/']
       }))
       .pipe(tasks.concat('bundle.js'))
       //.pipe(tasks.uglify())

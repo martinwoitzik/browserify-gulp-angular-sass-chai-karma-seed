@@ -36,15 +36,9 @@ Including modules inside of other modules is also straight forward - just requir
 Browserify does all the require magic so you can concentrate on coding features and not caring about files and how to set things up.
 
 
-# Improvements
-
-Maybe improve the project by using webpack instead of browserify. Currently the requiring of module-folders is not the best solution because
-you have to specify the exact relative path of the required module. Don't know yet if webpack provides a better solution.
-
-
 # TODO
 
 - language files need to be concatenated to one file
 - language files get compiled but are not included via angular yet
 - add font folder to /shared
-- specs not ready for production
+- extend configuration for gulp tasks
