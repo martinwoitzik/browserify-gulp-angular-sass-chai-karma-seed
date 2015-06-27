@@ -1,3 +1,16 @@
-.home {
-  background: greenyellow;
+.logo {
+  display: block;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+section {
+  background: lightgray;
+  display: block;
+  margin-bottom: 30px;
+  padding: 20px 5px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
 }

@@ -4,6 +4,7 @@ var appTitle = 'seedApp';
 
 require('ui/states/home');
 require('ui/states/foostate');
+require('utils/texts');
 
 
 var angular = require('angular');
@@ -14,6 +15,7 @@ angular.element(document).ready(function () {
 
 angular.module(appTitle, [
   require('angular-ui-router'),
+  'texts',
   'foostate',
   'home'
 ])
