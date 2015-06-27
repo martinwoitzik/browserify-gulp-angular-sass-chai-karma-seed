@@ -13,7 +13,7 @@ Module folders are similar to each other. They always include these files:
 - {modulename}.directive.js (angular-module directive)
 - {modulename}.html (template file)
 - {modulename}.scss (sass-stylesheets)
-- {modulename}.locales.json (JSON file including all neccessary locales - separated by locale ISO codes which are configured in 'gulp/config.js')
+- {modulename}_{isoCode}.json (JSON file including localized texts. All possible isoCodes can be specified via gulp/config.js)
 - {modulename}.spec.js (optional: spec-file for automated testing of your module)
 
 
