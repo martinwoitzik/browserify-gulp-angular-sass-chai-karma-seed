@@ -34,7 +34,7 @@ module.exports = function(gulp, tasks) {
   gulp.task('localization:modules:build', function() {
     supportedLanguages.forEach(function(language) {
       buildTranslations({
-        glob: config.project.source + config.scripts.source + 'ui/**/*/*_' + language +'.json',
+        glob: config.project.source + config.scripts.source + '**/*/*_' + language +'.json',
         dist: config.localization.output,
         language: language
       })
