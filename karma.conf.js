@@ -1,3 +1,10 @@
+var gulpConfig = require('./gulp/config');
+
+var scriptsBundle = gulpConfig.project.dist + gulpConfig.scripts.dist + gulpConfig.scripts.output + '.min.js';
+var templatesBundle = gulpConfig.project.dist + gulpConfig.scripts.dist + gulpConfig.templates.output + '.min.js';
+var scriptsRoot = gulpConfig.project.source + gulpConfig.scripts.source;
+var specFilesGlob = gulpConfig.project.source + '**/*.spec.js';
+
 module.exports = function(config) {
   var filesToLoad = [
     'bower_components/jquery/dist/jquery.js',
@@ -8,12 +15,9 @@ module.exports = function(config) {
     'node_modules/chai-jquery/chai-jquery.js',
     'node_modules/sinon/pkg/sinon.js',
     'node_modules/sinon-chai/lib/sinon-chai.js',
-
-    'public/js/bundle.min.js',
-    'public/js/templates.min.js',
-
-    // Spec files
-    'app/**/*.spec.js'
+    scriptsBundle,
+    templatesBundle,
+    specFilesGlob
   ];
 
   config.set({
@@ -23,8 +27,10 @@ module.exports = function(config) {
 
 
     browserify: {
+      insertGlobals: true,
       watch: true,
-      debug: true
+      debug: true,
+      paths: ['./node_modules', './' + scriptsRoot]
     },
 
 
