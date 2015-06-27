@@ -23,7 +23,7 @@ Open a console and enter the following commands:
 
 1. bower install
 2. npm install
-3. gulp build
+3. gulp build or gulp watch
 
 The project gets built for the first time. After the build is completed you can open the '/public/index.html' file in your browser.
 
@@ -41,4 +41,3 @@ Browserify does all the require magic so you can concentrate on coding features 
 - language files need to be concatenated to one file
 - language files get compiled but are not included via angular yet
 - add font folder to /shared
-- extend configuration for gulp tasks

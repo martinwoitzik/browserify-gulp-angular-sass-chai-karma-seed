@@ -24,7 +24,7 @@ module.exports = function(gulp, tasks) {
         fileModifier: function (file, content) {
           return 'module.exports = ' + content + ';';
         }}))
-      .pipe(gulp.dest('public/js'));
+      .pipe(gulp.dest(config.dist.base + 'js'));
   };
 
   gulp.task('localization', function(callback) {
@@ -34,7 +34,7 @@ module.exports = function(gulp, tasks) {
   gulp.task('localization:modules:build', function() {
     supportedLanguages.forEach(function(language) {
       buildTranslations({
-        glob: 'app/src/ui/**/*/*_' + language +'.json',
+        glob: config.source.base + 'src/ui/**/*/*_' + language +'.json',
         dist: 'localization',
         language: language
       })

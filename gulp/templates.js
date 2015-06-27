@@ -1,16 +1,18 @@
+var config = require('./config');
+
 module.exports = function(gulp, tasks) {
 
   gulp.task('templates', function () {
-    gulp.src('app/index.html')
-      .pipe(gulp.dest('public'));
-    return gulp.src('app/src/**/*.html')
+    gulp.src(config.source.base + 'index.html')
+      .pipe(gulp.dest(config.dist.base));
+    return gulp.src(config.source.base + 'src/**/*.html')
       .pipe(tasks.plumber())
       .pipe(tasks.htmlmin({collapseWhitespace: true}))
-      .pipe(tasks.templateCache('templates.min.js', {
+      .pipe(tasks.templateCache(config.dist.templates, {
         module: 'app.templates',
         standalone: true
       }))
-      .pipe(gulp.dest('public/js'));
+      .pipe(gulp.dest(config.dist.base + 'js'));
   });
 
 };

@@ -1,4 +1,5 @@
 var del = require('del');
+var config = require('./config');
 
 module.exports = function(gulp, tasks) {
 
@@ -9,7 +10,7 @@ module.exports = function(gulp, tasks) {
   });
 
   gulp.task('cleanup', function() {
-    return del(['public/**/*']);
+    return del([config.dist.base + '**/*']);
   });
 
 };

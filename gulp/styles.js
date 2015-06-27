@@ -1,3 +1,5 @@
+var config = require('./config');
+
 module.exports = function(gulp, tasks) {
 
   gulp.task('styles', function(callback) {
@@ -10,7 +12,7 @@ module.exports = function(gulp, tasks) {
    */
   gulp.task('styles:css:modules', function() {
     return gulp.src([
-      "app/*/**/*.scss",
+      config.source.base + "*/**/*.scss",
       "!**/_styles*/**/*"
     ])
       .pipe(tasks.plumber())
@@ -26,18 +28,18 @@ module.exports = function(gulp, tasks) {
           return '// This file is generated via gulp!\n' + contents + '\n';
         }
       }))
-      .pipe(gulp.dest('app'));
+      .pipe(gulp.dest(config.source.base));
   });
 
   gulp.task('styles:css:build', [], function () {
     var sassOptions = {
       outputStyle: 'compressed'
     };
-    return gulp.src(['app/app.scss'])
+    return gulp.src([config.source.base + 'app.scss'])
       .pipe(tasks.plumber())
       .pipe(tasks.sass(sassOptions))
       .pipe(tasks.autoprefixer())
-      .pipe(gulp.dest('public/css'));
+      .pipe(gulp.dest(config.dist.base + 'css'));
   });
 
 };

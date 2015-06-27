@@ -1,3 +1,5 @@
+var config = require('./config');
+
 module.exports = function(gulp, tasks) {
 
   gulp.task('scripts', function(callback) {
@@ -10,7 +12,7 @@ module.exports = function(gulp, tasks) {
    */
   gulp.task('scripts:js:modules', function() {
     return gulp.src([
-      "app/**/**/index.js"
+      config.source.base + "**/**/index.js"
     ])
       .pipe(tasks.plumber())
       .pipe(tasks.modify({
@@ -25,20 +27,20 @@ module.exports = function(gulp, tasks) {
           return '// This file is generated via gulp!\n' + contents + '\n';
         }
       }))
-      .pipe(gulp.dest('app'));
+      .pipe(gulp.dest(config.dist.base));
   });
 
   gulp.task('scripts:js:build', function() {
-    return gulp.src(['app/app.js'])
+    return gulp.src([config.source.base + 'app.js'])
       .pipe(tasks.plumber())
       .pipe(tasks.browserify({
         insertGlobals: true,
         debug: true,
-        paths: ['./node_modules','./app/src/']
+        paths: ['./node_modules', './' + config.source.base + 'src/']
       }))
-      .pipe(tasks.concat('bundle.js'))
+      .pipe(tasks.concat(config.dist.js))
       //.pipe(tasks.uglify())
-      .pipe(gulp.dest('public/js'));
+      .pipe(gulp.dest(config.dist.base + 'js'));
   });
 
 };
