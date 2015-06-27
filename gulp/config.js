@@ -23,7 +23,7 @@ var config = {
   sass: {
     dist: 'css',
     entryPoint: 'app.scss',
-    concatenatedModuleStyles: '_modules.scss'
+    concatenatedModuleStyleImports: '_moduleStyleImports.scss'
   },
   templates: {
     entryPoint: 'index.html',

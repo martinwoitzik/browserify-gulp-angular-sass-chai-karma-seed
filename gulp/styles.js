@@ -22,7 +22,7 @@ module.exports = function(gulp, tasks) {
           return "@import './" + filePath + "';";
         }
       }))
-      .pipe(tasks.concat(config.sass.concatenatedModuleStyles))
+      .pipe(tasks.concat(config.sass.concatenatedModuleStyleImports))
       .pipe(tasks.modify({
         fileModifier: function(file, contents) {
           return '// This file is generated via gulp!\n' + contents + '\n';
