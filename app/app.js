@@ -1,33 +1,31 @@
 'use strict';
 
-require('./src/ui/states/foostate');
+var appTitle = 'seedApp';
+
+require('ui/states/home');
+require('ui/states/foostate');
+
 
 var angular = require('angular');
-var app = angular.module('seedApp', [
+
+angular.element(document).ready(function () {
+  angular.bootstrap(document, [appTitle]);
+});
+
+angular.module(appTitle, [
   require('angular-ui-router'),
   'foomodule1',
   'foomodule2',
-  'foostate'
-]);
+  'foostate',
+  'home'
+])
+  .run(function () {
 
-angular.element(document).ready(function() {
-  angular.bootstrap(document, ['seedApp']);
-});
+    console.log('angular app running');
 
-app.run(function() {
-  console.log('run angular app');
-});
+  })
+  .config(function ($stateProvider, $urlRouterProvider) {
 
-app.config(function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
 
-  $urlRouterProvider
-    .otherwise('/');
-
-  $stateProvider.state(
-    'home', {
-      url: '/',
-      template: '<a ui-sref="foostate">Goto foostate</a>'
-    }
-  );
-
-});
+  });
