@@ -9,7 +9,7 @@ module.exports = function(config) {
     'node_modules/sinon/pkg/sinon.js',
     'node_modules/sinon-chai/lib/sinon-chai.js',
 
-    'public/js/bundle.js',
+    'public/js/bundle.min.js',
     'public/js/templates.min.js',
 
     // Spec files
