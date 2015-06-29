@@ -40,3 +40,7 @@ Browserify does all the require magic so you can concentrate on coding features 
 # TODO
 
 - add font folder to /shared
+- integrate bootstrap (optionally)
+- upgrade to coffeescript / maybe ecmascript6 ?
+- catch errors in gulp tasks
+
