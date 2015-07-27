@@ -20,7 +20,7 @@ module.exports = function(karmaConfig) {
     specFilesGlob
   ];
 
-  karmaConfig.set({
+  var configuration = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -31,6 +31,14 @@ module.exports = function(karmaConfig) {
       watch: true,
       debug: true,
       paths: ['./node_modules', './' + scriptsRoot]
+    },
+
+
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
     },
 
 
@@ -98,6 +106,12 @@ module.exports = function(karmaConfig) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
-  });
+    singleRun: true
+  };
+
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+  }
+
+  karmaConfig.set(configuration);
 };
