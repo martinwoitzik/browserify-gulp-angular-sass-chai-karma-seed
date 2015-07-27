@@ -38,9 +38,6 @@ module.exports = function(karmaConfig) {
       Chrome_travis_ci: {
         base: 'Chrome',
         flags: ['--no-sandbox']
-      },
-      Chrome: {
-        flags: ['--no-sandbox']
       }
     },
 
@@ -109,11 +106,12 @@ module.exports = function(karmaConfig) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: false
   };
 
   if (process.env.TRAVIS) {
-    configuration.browsers = ['Firefox'];
+    configuration.browsers = ['Chrome_travis_ci'];
+    configuration.singleRun = true;
   }
 
   karmaConfig.set(configuration);

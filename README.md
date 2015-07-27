@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/martinwoitzik/browserify-gulp-angular-sass-chai-karma-seed.svg)](https://travis-ci.org/martinwoitzik/browserify-gulp-angular-sass-chai-karma-seed)
-
 # Seed Project including browserify, gulp, angular, sass, chai, karma
 
 Seed project structure for easily setting up frontend projects with angular, browserify, sass, gulp and for TDD-purposes also karma and chai.
