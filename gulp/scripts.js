@@ -35,13 +35,14 @@ module.exports = function(gulp, tasks) {
   gulp.task('scripts:js:build', function() {
     return gulp.src([config.project.source + config.scripts.entryPoint])
       .pipe(tasks.plumber())
+      .pipe(tasks.babel())
       .pipe(tasks.browserify({
         insertGlobals: true,
         debug: true,
         paths: ['./node_modules', './' + config.project.source + config.scripts.source]
       }))
       .pipe(tasks.concat(config.scripts.output + '.min.js'))
-      .pipe(tasks.uglify())
+      //.pipe(tasks.uglify())
       .pipe(gulp.dest(config.project.dist + config.scripts.dist));
   });
 
