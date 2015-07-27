@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/angular-ui-tree/angular-ui-tree.svg?branch=master)](https://travis-ci.org/angular-ui-tree/angular-ui-tree)
+
 # Seed Project including browserify, gulp, angular, sass, chai, karma
 
 Seed project structure for easily setting up frontend projects with angular, browserify, sass, gulp and for TDD-purposes also karma and chai.
