@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "build": "gulp build",
     "test": "gulp specs",
     "start": "gulp watch"
   },
