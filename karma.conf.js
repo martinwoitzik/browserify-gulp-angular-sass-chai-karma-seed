@@ -38,6 +38,9 @@ module.exports = function(karmaConfig) {
       Chrome_travis_ci: {
         base: 'Chrome',
         flags: ['--no-sandbox']
+      },
+      Chrome: {
+        flags: ['--no-sandbox']
       }
     },
 
@@ -110,7 +113,7 @@ module.exports = function(karmaConfig) {
   };
 
   if (process.env.TRAVIS) {
-    configuration.browsers = ['Chrome_travis_ci'];
+    configuration.browsers = ['Firefox'];
   }
 
   karmaConfig.set(configuration);
