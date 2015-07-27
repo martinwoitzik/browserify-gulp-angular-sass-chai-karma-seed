@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/angular-ui-tree/angular-ui-tree.svg?branch=master)](https://travis-ci.org/angular-ui-tree/angular-ui-tree)
+[![Build Status](https://travis-ci.org/martinwoitzik/browserify-gulp-angular-sass-chai-karma-seed.svg)](https://travis-ci.org/martinwoitzik/browserify-gulp-angular-sass-chai-karma-seed)
 
 # Seed Project including browserify, gulp, angular, sass, chai, karma
 
