@@ -35,7 +35,6 @@ module.exports = function(gulp, tasks) {
   gulp.task('scripts:js:build', function() {
     return gulp.src([config.project.source + config.scripts.entryPoint])
       .pipe(tasks.plumber())
-      .pipe(tasks.babel())
       .pipe(tasks.browserify({
         insertGlobals: true,
         debug: true,
