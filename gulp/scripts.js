@@ -2,8 +2,12 @@ var config = require('./config');
 
 module.exports = function(gulp, tasks) {
 
-  gulp.task('scripts', function(callback) {
-    tasks.runSequence('scripts:js:build', callback);
+  gulp.task('scripts:development', function(callback) {
+    tasks.runSequence('scripts:js:build:development', callback);
+  });
+
+  gulp.task('scripts:production', function(callback) {
+    tasks.runSequence('scripts:js:build:production', callback);
   });
 
   /**
@@ -32,7 +36,7 @@ module.exports = function(gulp, tasks) {
       .pipe(gulp.dest(config.project.dist));
   });
 
-  gulp.task('scripts:js:build', function() {
+  gulp.task('scripts:js:build:development', function() {
     return gulp.src([config.project.source + config.scripts.entryPoint])
       .pipe(tasks.plumber())
       .pipe(tasks.browserify({
@@ -41,7 +45,19 @@ module.exports = function(gulp, tasks) {
         paths: ['./node_modules', './' + config.project.source + config.scripts.source]
       }))
       .pipe(tasks.concat(config.scripts.output + '.min.js'))
-      //.pipe(tasks.uglify())
+      .pipe(gulp.dest(config.project.dist + config.scripts.dist));
+  });
+
+  gulp.task('scripts:js:build:production', function() {
+    return gulp.src([config.project.source + config.scripts.entryPoint])
+      .pipe(tasks.plumber())
+      .pipe(tasks.browserify({
+        insertGlobals: true,
+        debug: false,
+        paths: ['./node_modules', './' + config.project.source + config.scripts.source]
+      }))
+      .pipe(tasks.concat(config.scripts.output + '.min.js'))
+      .pipe(tasks.uglify())
       .pipe(gulp.dest(config.project.dist + config.scripts.dist));
   });
 
