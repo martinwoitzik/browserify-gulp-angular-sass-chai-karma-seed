@@ -2,9 +2,8 @@ var config = require('./config');
 
 module.exports = function(gulp, tasks) {
 
-  gulp.task('watch', ['build'], function() {
+  gulp.task('watch', ['build:noscripts', 'scripts:js:watchify'], function() {
     var filesToWatch = [
-      '**/*.js',
       '**/*.html',
       '**/*.scss',
       '**/*.{png,jpg,jpeg,gif,svg}'
@@ -21,7 +20,7 @@ module.exports = function(gulp, tasks) {
     });
 
     gulp.watch(filesToWatch.concat(filesToExclude), [
-      'build'
+      'build:noscripts'
     ], function(err) {
       console.log(err);
     });

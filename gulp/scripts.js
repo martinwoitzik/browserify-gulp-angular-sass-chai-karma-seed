@@ -1,4 +1,10 @@
 var config = require('./config');
+var assign = require('lodash.assign');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+var gutil = require('gulp-util');
 
 module.exports = function(gulp, tasks) {
 
@@ -59,6 +65,32 @@ module.exports = function(gulp, tasks) {
       .pipe(tasks.concat(config.scripts.output + '.min.js'))
       .pipe(tasks.uglify())
       .pipe(gulp.dest(config.project.dist + config.scripts.dist));
+  });
+
+  gulp.task('scripts:js:watchify', function() {
+    var customOpts = {
+      entries: [config.project.source + config.scripts.entryPoint],
+      debug: true,
+      paths: ['./node_modules', './' + config.project.source + config.scripts.source]
+    };
+    var opts = assign({}, watchify.args, customOpts);
+    var b = watchify(browserify(opts), {poll: 100});
+    b.on('update', function() {
+      bundle();
+    });
+    b.on('log', gutil.log);
+
+    function bundle() {
+      return b.bundle()
+        .on('error', gutil.log.bind(gutil, gutil.colors.red('Browserify Error')))
+        .pipe(source(config.scripts.output + '.min.js'))
+        .pipe(buffer())
+        .pipe(tasks.sourcemaps.init({loadMaps: true}))
+        .pipe(tasks.sourcemaps.write('./'))
+        .pipe(gulp.dest(config.project.dist + config.scripts.dist));
+    }
+
+    return bundle();
   });
 
 };
