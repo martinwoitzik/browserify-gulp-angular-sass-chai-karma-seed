@@ -1,4 +1,7 @@
 var config = {
+  bundle: {
+    js: 'bundle-assets.js'
+  },
   images: {
     dist: 'images/',
     source: 'common/images/'
