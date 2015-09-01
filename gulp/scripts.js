@@ -78,7 +78,9 @@ module.exports = function(gulp, tasks) {
     b.on('update', function() {
       bundle();
     });
-    b.on('log', gutil.log);
+    b.on('log', function(log) {
+      gutil.log('Watchify: ' + log);
+    });
 
     function bundle() {
       return b.bundle()

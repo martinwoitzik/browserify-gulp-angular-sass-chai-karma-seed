@@ -4,7 +4,7 @@ var config = require('./config');
 module.exports = function(gulp, tasks) {
 
   var buildFor = function(type, callback) {
-    tasks.runSequence('cleanup', 'styles', 'images', 'localization', 'templates', 'scripts:' + type, callback);
+    tasks.runSequence('cleanup', 'styles', 'images', 'localization', 'templates', 'bundle', 'scripts:' + type, callback);
   };
 
   gulp.task('default', ['build:development']);
@@ -18,7 +18,7 @@ module.exports = function(gulp, tasks) {
   });
 
   gulp.task('build:noscripts', function(callback) {
-    tasks.runSequence('cleanup', 'styles', 'images', 'localization', 'templates', callback);
+    tasks.runSequence('cleanup', 'styles', 'images', 'localization', 'templates', 'bundle', callback);
   });
 
   gulp.task('cleanup', function() {
