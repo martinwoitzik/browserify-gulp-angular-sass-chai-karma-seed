@@ -37,7 +37,7 @@ module.exports = function(gulp, tasks) {
     };
     return gulp.src([config.project.source + config.sass.entryPoint])
       .pipe(tasks.plumber())
-      .pipe(tasks.sass(sassOptions))
+      .pipe(tasks.sass(sassOptions).on('error', tasks.sass.logError))
       .pipe(tasks.autoprefixer())
       .pipe(gulp.dest(config.project.dist + config.sass.dist));
   });
